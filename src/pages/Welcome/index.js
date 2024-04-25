@@ -18,16 +18,16 @@ export default function Welcome(){
         <View style={styles.container}> 
             <View style={styles.containerLogo}>
                 <Animatable.Image
-                   animation="flipInY"
-                   source={require('../../assets/logoOficial.png')}
-                   style={{width:'100%'}}
-                   resizeMode ="contain"
+                    animation="flipInY"
+                    source={require('../../assets/logoOficial.png')}
+                    style={{width:'100%'}}
+                    resizeMode ="contain"
                 />
             </View>
 
             <Animatable.View delay={600} animation="fadeInUp" style={styles.containerForm}>
                 <Text style={styles.title}>Fique por dentro das principais informações sobre transportes coletivos!</Text>
-                <Text style={styles.text}>Faça o Login para começar</Text>
+                <Text style={styles.text}>Faça o Login para começar.</Text>
 
                 <TouchableOpacity 
                 style={styles.button}
@@ -35,10 +35,7 @@ export default function Welcome(){
                 >
                     <Text style={styles.buttonText}>Acessar</Text>
                 </TouchableOpacity>
-
             </Animatable.View>
-
-
         </View>
     );
 }

@@ -6,6 +6,7 @@ import {useNavigation} from "@react-navigation/native"
 import {createUserWithEmailAndPassword} from "firebase/auth"
 import {FIREBASE_AUTH } from "../../../firebaseConfig";
 import { ActivityIndicator } from "react-native";
+import { MaterialCommunityIcons } from '@expo/vector-icons'; 
 
 export default function SingUp() {
   const [loading, setLoading] = useState(false)
@@ -13,6 +14,12 @@ export default function SingUp() {
   const [email, setEmail] = useState("")
   const navigation = useNavigation()
   const auth = FIREBASE_AUTH
+
+  const [showPassword, setShowPassword] = useState(false); 
+
+  const toggleShowPassword = () => {
+    setShowPassword(!showPassword)
+  }
 
   async function signUp() {
     setLoading(true)
@@ -35,7 +42,7 @@ export default function SingUp() {
       <Animatable.View animation="fadeInUp" style={styles.containerForm}>
         <Text style={styles.title}>Email</Text>
         <TextInput
-          placeholder="Escolha um email..."
+          placeholder="Escolha um email"
           style={styles.input}
           onChangeText={(email) => setEmail(email)}
           onKeyPress={e => e.bubbles}
@@ -44,11 +51,20 @@ export default function SingUp() {
         <Text style={styles.title}>Senha</Text>
         <TextInput
           placeholder="Escolha uma senha"
+          secureTextEntry={!showPassword}
           // secureTextEntry={true}
           style={styles.input}
           onChangeText={(password) => setPassword(password)}
           autoCapitalize="none"
         />
+        
+        <MaterialCommunityIcons 
+          name={showPassword ? 'eye-off' : 'eye'} 
+          size={24} 
+          color="#aaa"
+          style={styles.icon} 
+          onPress={toggleShowPassword} 
+        /> 
 
         {
           loading ?
@@ -60,14 +76,10 @@ export default function SingUp() {
               </TouchableOpacity>
             </>
         }
-
       </Animatable.View>
-
     </View>
   );
 }
-
-
 
 const styles = StyleSheet.create({
   container: {
@@ -105,7 +117,7 @@ const styles = StyleSheet.create({
     borderWidth:1,
     borderRadius:5,
     borderColor:'#d3d3d3',
-    padding:1,
+    padding:10,
   },
   button: {
     backgroundColor: '#38a69d',

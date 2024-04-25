@@ -4,6 +4,7 @@ import { FIREBASE_AUTH } from "../../../firebaseConfig";
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, ActivityIndicator} from 'react-native';
 import { signInWithEmailAndPassword } from "firebase/auth";
 import {useNavigation} from "@react-navigation/native"
+import { MaterialCommunityIcons } from '@expo/vector-icons'; 
 
 export default function SingIn() {
     const auth = FIREBASE_AUTH
@@ -11,6 +12,12 @@ export default function SingIn() {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [loading, setLoading] = useState(false)
+    const [showPassword, setShowPassword] = useState(false); 
+
+
+    const toggleShowPassword = () => {
+        setShowPassword(!showPassword)
+      }
 
     async function signIn(){
         setLoading(true);
@@ -38,19 +45,27 @@ export default function SingIn() {
             <Animatable.View animation="fadeInUp" style={styles.containerForm}>
                 <Text style={styles.title}>Email</Text>
                 <TextInput
-                    placeholder="Digite seu email..."
+                    placeholder="Digite seu email"
                     style={styles.input}
                     onChangeText={(e) => setEmail(e)}
                 />
 
                 <Text style={styles.title}>Senha</Text>
                 <TextInput
+                    secureTextEntry={!showPassword}
                     placeholder="Digite sua senha"
                     // secureTextEntry={true}
                     style={styles.input}
                     onChangeText={(p) => setPassword(p)}
                     autoCapitalize="none"
                 />
+                <MaterialCommunityIcons 
+                  name={showPassword ? 'eye-off' : 'eye'} 
+                  size={24} 
+                  color="#aaa"
+                  style={styles.icon} 
+                  onPress={toggleShowPassword} 
+                /> 
 
                 {
                     loading ?
@@ -110,7 +125,7 @@ const styles = StyleSheet.create({
         borderWidth:1,
         borderRadius:5,
         borderColor:'#d3d3d3',
-        padding:1,
+        padding:10,
     },
     button: {
         backgroundColor: '#38a69d',
