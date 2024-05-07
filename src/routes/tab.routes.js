@@ -4,6 +4,11 @@ import Welcome from '../pages/Welcome'
 import SingIn from '../pages/SingIn'
 import SingUp from "../pages/SingUp"
 import Logado from "../pages/Logado"
+import PopUp from "../pages/PopUp"
+import SingIn_Motorista from "../pages/SingIn_Motorista"
+import SingUp_Motorista from "../pages/SingUp_Motorista";
+
+
 
 
 import { useEffect, useState } from "react";
@@ -47,6 +52,21 @@ export default function StackRoutes() {
                 name="Logado"
                 component={Logado}
                 options={{ headerShown: false }}
+            />
+            <Stack.Screen
+                name="PopUp"
+                component={PopUp}
+                options={{ headerShown: false }}
+            />
+            <Stack.Screen
+            name="SingIn_Motorista"
+            component={SingIn_Motorista}
+            options={{ headerShown: false }}
+            />
+            <Stack.Screen
+            name="SingUp_Motorista"
+            component={SingUp_Motorista}
+            options={{ headerShown: false }}
             />
         </Stack.Navigator>
     )

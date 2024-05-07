@@ -6,7 +6,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import {useNavigation} from "@react-navigation/native"
 import { MaterialCommunityIcons } from '@expo/vector-icons'; 
 
-export default function SingIn() {
+export default function SingIn_Motorista() {
     const auth = FIREBASE_AUTH
     const navigation = useNavigation()
     const [email, setEmail] = useState("")
@@ -19,7 +19,7 @@ export default function SingIn() {
         setShowPassword(!showPassword)
       }
 
-    async function signIn(){
+    async function signIn_Motorista(){
         setLoading(true);
         const finalEmail = email.trim()
         try {
@@ -39,7 +39,7 @@ export default function SingIn() {
         
         <View style={styles.container}>
             <Animatable.View animation="fadeInLeft" delay={500} style={styles.containerHeader}>
-                <Text style={styles.message}>Bem-vindo(a), passageiro(a)!</Text>
+                <Text style={styles.message}>Bem-vindo(a), motorista!</Text>
             </Animatable.View>
 
             <Animatable.View animation="fadeInUp" style={styles.containerForm}>
@@ -72,11 +72,11 @@ export default function SingIn() {
                         <ActivityIndicator size='large' color='#0000ff' />
                         :
                         <>
-                            <TouchableOpacity style={styles.button} onPress={() => signIn()}>
+                            <TouchableOpacity style={styles.button} onPress={() => signIn_Motorista()}>
                                 <Text style={styles.buttonText}>Acessar</Text>
                             </TouchableOpacity>
 
-                            <TouchableOpacity style={styles.buttonRegister} onPress={() => navigation.navigate("SingUp")}>
+                            <TouchableOpacity style={styles.buttonRegister} onPress={() => navigation.navigate("SingUp_Motorista")}>
                                 <Text style={styles.registerText}>Cadastrar-se</Text>
                             </TouchableOpacity>
 

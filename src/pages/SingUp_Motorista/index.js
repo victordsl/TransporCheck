@@ -8,7 +8,7 @@ import {FIREBASE_AUTH } from "../../../firebaseConfig";
 import { ActivityIndicator } from "react-native";
 import { MaterialCommunityIcons } from '@expo/vector-icons'; 
 
-export default function SingUp() {
+export default function SingUp_Motorista() {
   const [loading, setLoading] = useState(false)
   const [password, setPassword] = useState("")
   const [email, setEmail] = useState("")
@@ -21,7 +21,7 @@ export default function SingUp() {
     setShowPassword(!showPassword)
   }
 
-  async function signUp() {
+  async function signUp_Motorista() {
     setLoading(true)
     const final_email = email.trim()
     try {
@@ -36,7 +36,7 @@ export default function SingUp() {
 
     <View style={styles.container}>
       <Animatable.View animation="fadeInLeft" delay={500} style={styles.containerHeader}>
-        <Text style={styles.message}>Cadastre-se, passageiro(a)!</Text>
+        <Text style={styles.message}>Cadastre-se, motorista!</Text>
       </Animatable.View>
 
       <Animatable.View animation="fadeInUp" style={styles.containerForm}>
@@ -71,7 +71,7 @@ export default function SingUp() {
             <ActivityIndicator size='large' color='#0000ff' />
             :
             <>
-              <TouchableOpacity style={styles.button} onPress={() => signUp()} >
+              <TouchableOpacity style={styles.button} onPress={() => signUp_Motorista()} >
                 <Text style={styles.buttonText}>Criar Conta</Text>
               </TouchableOpacity>
             </>
